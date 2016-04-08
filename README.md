@@ -29,7 +29,7 @@ import herokuDynoMetadata from 'heroku-dyno-metadata';
 const app = express()
   .use(herokuDynoMetadata());
 
-// Responses will have the following headers:
+// Responses will have the following example headers:
 // 
 // X-Heroku-App-Id: 2d9a4aaf-1023-4520-8ed1-d6fda6fd86d6
 // X-Heroku-App-Name: heroku-dyno-metadata
@@ -41,6 +41,36 @@ const app = express()
 // X-Heroku-Release-Version: v832
 
 ```
+
+## API
+
+#### herokuDynoMetadata
+**`herokuDynoMetadata([keys])`**
+
+- This function is exposed as the `default` export.
+- Use `import herokuDynoMetadata from 'heroku-dyno-metadata'` or `require('heroku-dyno-metadata')`.
+- Returns an Express middleware.
+- The optional `keys` argument allows picking headers exposed. Default is all headers available (listed below).
+- Example:
+
+  ```js
+  herokuDynoMetadata(['x-heroku-app-id', 'x-heroku-dyno-id']);
+  ```
+
+## Available headers
+
+| Header        | Description   | Example   |
+| ------------- |---------------|-----------|
+| x-heroku-app-id | The unique identifier for the application | `9daa2797-e49b-4624-932f-ec3f9688e3da` |
+| x-heroku-app-name | The application name | `example-app` |
+| x-heroku-dyno-id | The dyno identifier | `1vac4117-c29f-4312-521e-ba4d8638c1ac` |
+| x-heroku-dyno-name | The dyno name | `web.1` |
+| x-heroku-slug-commit | The commit hash for current release | `2c3a0b24069af49b3de35b8e8c26765c1dba9ff0` |
+| x-heroku-slug-description | The commit description for current release | `Deploy 2c3a0b2` |
+| x-heroku-release-created-at | The time and date the release was created     | `2015/04/02 18:00:42` |
+| x-heroku-release-version | The version of current release | `v42` |
+
+More information: [Heroku Labs: Dyno Metadata](https://devcenter.heroku.com/articles/dyno-metadata)
 
 ## License
 
