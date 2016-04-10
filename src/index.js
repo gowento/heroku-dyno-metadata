@@ -15,10 +15,10 @@ export const mapping = {
 
 const metadata = _.mapValues(mapping, value => process.env[value]);
 
-function getHeaders(keys = _.keys(mapping)) {
+function getHeaders(keys) {
   return _(metadata)
     .mapKeys((val, key) => `${headerPrefix}-${_.kebabCase(key)}`)
-    .pick(keys)
+    .pickBy((val, key) => (keys ? _.includes(_.map(keys, _.toLower), key) : true))
     .omitBy(_.isUndefined)
     .value();
 }
