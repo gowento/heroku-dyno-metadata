@@ -15,6 +15,7 @@ function getHeaders(keys = _.keys(mapping)) {
   return _(mapping)
     .pick(keys)
     .mapValues(value => process.env[value])
+    .omitBy(_.isUndefined)
     .value();
 }
 
@@ -22,6 +23,8 @@ export default function (keys) {
   return function expressMiddleware(req, res, next) {
     const headers = getHeaders(keys);
     res.set(headers);
+    if (headers) {
+    }
 
     next();
   };
