@@ -6,7 +6,7 @@
 [![Dependency Status][depstat-image]][depstat-url]
 [![Downloads][download-badge]][npm-url]
 
-> Express middleware to expose Heroku Dyno metadata as HTTP headers
+> Access Heroku Dyno metadata in Node.js and expose them as HTTP headers.
 
 ## Install
 
@@ -24,7 +24,7 @@ heroku labs:enable runtime-dyno-metadata -a <app name>
 
 ```js
 import express from 'express';
-import herokuDynoMetadata from 'heroku-dyno-metadata';
+import { middleware as herokuDynoMetadata } from 'heroku-dyno-metadata';
 
 const app = express()
   .use(herokuDynoMetadata());
@@ -44,17 +44,29 @@ const app = express()
 
 ## API
 
-#### herokuDynoMetadata
-**`herokuDynoMetadata([keys])`**
+#### metadata
+**`metadata`**
 
 - This function is exposed as the `default` export.
-- Use `import herokuDynoMetadata from 'heroku-dyno-metadata'` or `require('heroku-dyno-metadata')`.
+- Use `import metadata from 'heroku-dyno-metadata'` or `require('heroku-dyno-metadata')`.
+- Returns an object containing Heroku Dyno metadata, keys are camel-cased.
+- Example:
+
+  ```js
+  console.log(metadata.dynoName);
+  // "web.1"
+  ```
+
+#### middleware
+**`middleware([keys])`**
+
+- Use `import { middleware } from 'heroku-dyno-metadata'` or `require('heroku-dyno-metadata').middleware`.
 - Returns an Express middleware.
 - The optional `keys` argument allows picking headers exposed. Default is all headers available (listed below).
 - Example:
 
   ```js
-  herokuDynoMetadata(['x-heroku-app-id', 'x-heroku-dyno-id']);
+  middleware(['x-heroku-app-id', 'x-heroku-dyno-id']);
   ```
 
 ## Available headers
