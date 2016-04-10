@@ -30,7 +30,8 @@
     "failFast": false,
     "verbose": false,
     "require": [
-      "babel-core/register"
+      "babel-core/register",
+      "./test/_fixtures.js"
     ]
   },
   "repository": {
