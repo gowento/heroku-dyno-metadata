@@ -45,6 +45,12 @@ test('middleware sets picked headers only', async t => {
 
   _.forEach(mapping, (value, key) => {
     const header = `x-heroku-${_.kebabCase(key)}`;
-    t.is(res.get(header), _.includes(_.map(keys, _.toLower), header) ? process.env[value] : undefined);
+    t.is(
+      res.get(header),
+      _.includes(
+        _.map(keys, _.toLower), header)
+      ? process.env[value]
+      : undefined
+    );
   });
 });
