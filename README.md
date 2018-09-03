@@ -1,12 +1,12 @@
 # heroku-dyno-metadata
 
+Access Heroku Dyno metadata in Node.js and expose them as HTTP headers.
+
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Coveralls Status][coveralls-image]][coveralls-url]
 [![Dependency Status][depstat-image]][depstat-url]
 [![Downloads][download-badge]][npm-url]
-
-> Access Heroku Dyno metadata in Node.js and expose them as HTTP headers.
 
 ## Install
 
