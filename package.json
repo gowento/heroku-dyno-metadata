@@ -23,7 +23,7 @@
     "release": "np",
     "test": "NODE_ENV=test ava"
   },
-  "homepage": "https://github.com/gowento/heroku-dyno-metadata#readme",
+  "homepage": "https://github.com/gowento/heroku-dyno-metadata",
   "repository": {
     "type": "git",
     "url": "git@github.com:gowento/heroku-dyno-metadata.git"
