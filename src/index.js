@@ -18,7 +18,9 @@ const metadata = _.mapValues(mapping, value => process.env[value]);
 function getHeaders(keys) {
   return _(metadata)
     .mapKeys((val, key) => `${headerPrefix}-${_.kebabCase(key)}`)
-    .pickBy((val, key) => (keys ? _.includes(_.map(keys, _.toLower), key) : true))
+    .pickBy(
+      (val, key) => (keys ? _.includes(_.map(keys, _.toLower), key) : true)
+    )
     .omitBy(_.isUndefined)
     .value();
 }
