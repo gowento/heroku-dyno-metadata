@@ -21,7 +21,7 @@
     "prebuild": "npm run lint && rimraf ./dist && mkdirp ./dist/cjs && npm run depcheck",
     "prepare": "npm run build",
     "release": "np",
-    "test": "NODE_ENV=test ava"
+    "test": "ava"
   },
   "homepage": "https://github.com/gowento/heroku-dyno-metadata",
   "repository": {

@@ -9,4 +9,7 @@ export default {
   },
   // Apply project `.babelrc.js` to source files
   require: ['@babel/register'],
+  environmentVariables: {
+    NODE_ENV: 'test',
+  },
 };
